@@ -7,6 +7,8 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    alwaysOnTop: true,
+    show: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
@@ -14,6 +16,10 @@ function createWindow() {
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, "../views", "index.html"));
+
+  setTimeout(() => {
+    mainWindow.showInactive();
+  }, 1000);
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
